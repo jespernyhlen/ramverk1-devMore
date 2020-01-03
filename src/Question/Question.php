@@ -69,7 +69,7 @@ class Question extends ActiveRecordModel
     /**
     * Get comments from id.
     *
-    * @return Comment array
+    * @return array
     */
     public function getComments()
     {

@@ -25,22 +25,22 @@ class Comment extends ActiveRecordModel
     public $answerId;
     public $message;
 
-    /**
-    * Get questions.
-    *
-    *
-    * @return Question array
-    */
-    public function getComments()
-    {
-        $res = $this->db->connect()
-                        ->select()
-                        ->from("Question")
-                        ->orderBy("created DESC")
-                        ->execute()
-                        ->fetchAll();
-        return $res;
-    }
+    // /**
+    // * Get questions.
+    // *
+    // *
+    // * @return Question array
+    // */
+    // public function getComments()
+    // {
+    //     $res = $this->db->connect()
+    //                     ->select()
+    //                     ->from("Question")
+    //                     ->orderBy("created DESC")
+    //                     ->execute()
+    //                     ->fetchAll();
+    //     return $res;
+    // }
 
     /**
     * Get username of comment.
@@ -58,7 +58,7 @@ class Comment extends ActiveRecordModel
      /**
     * Get tag.
     *
-    * @return Comment
+    * @return array
     */
     public function getCommentsByQuestion($questId)
     {

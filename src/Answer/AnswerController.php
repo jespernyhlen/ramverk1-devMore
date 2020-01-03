@@ -73,7 +73,6 @@ class AnswerController implements ContainerInjectableInterface
 
         if ($this->di->get("session")->get("username") !== $answerInfo->username) {
             return $this->di->get('response')->redirect("");
-
         }
 
         $form = new UpdateForm($this->di, $id);
@@ -114,6 +113,6 @@ class AnswerController implements ContainerInjectableInterface
         $user->setDb($this->di->get("dbqb"));
         $user->updateScore($postedUsername, 7.5, 1);
         
-        return $this->di->response->redirect("{$returnLocation}");
+        return $this->di->get('response')->redirect("{$returnLocation}");
     }
 }

@@ -22,7 +22,7 @@ class TagController implements ContainerInjectableInterface
      */
     public function indexActionGet() : object
     {
-        return $this->di->response->redirect("tag/search");
+        return $this->di->get('response')->redirect("tag/search");
     }
 
      /**
