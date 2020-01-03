@@ -12,13 +12,15 @@ return [
         "region" => "layout",
         "template" => "anax/v2/layout/dbwebb_se",
         "data" => [
-            "baseTitle" => " | ramverk1",
+            "baseTitle" => " | devMore",
             "bodyClass" => null,
             "favicon" => "favicon.ico",
             "htmlClass" => null,
             "lang" => "sv",
             "stylesheets" => [
-                "css/dbwebb-se.min.css",
+                // "css/dbwebb-se.min.css",
+                "css/dbwebb-se_v2.min.css",
+
             ],
             "javascripts" => [
                 "js/responsive-menu.js",
@@ -33,8 +35,8 @@ return [
             "template" => "anax/v2/header/site_logo",
             "data" => [
                 "class" => "large",
-                "siteLogo"      => "image/theme/leaf_256x256.png",
-                "siteLogoAlt"   => "Löv",
+                "siteLogo"      => null,
+                "siteLogoAlt"   => null,
             ],
         ],
         [
@@ -42,9 +44,9 @@ return [
             "template" => "anax/v2/header/site_logo_text",
             "data" => [
                 "homeLink"      => "",
-                "siteLogoText"  => "ramverk1",
-                "siteLogoTextIcon" => "image/theme/leaf_40x40.png",
-                "siteLogoTextIconAlt" => "Löv-bild",
+                "siteLogoText"  => "devMore",
+                "siteLogoTextIcon" => null,
+                "siteLogoTextIconAlt" => null,
             ],
         ],
         [
