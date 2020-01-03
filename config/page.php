@@ -30,15 +30,7 @@ return [
 
     // These views are always loaded into the collection of views.
     "views" => [
-        [
-            "region" => "header-col-1",
-            "template" => "anax/v2/header/site_logo",
-            "data" => [
-                "class" => "large",
-                "siteLogo"      => null,
-                "siteLogoAlt"   => null,
-            ],
-        ],
+
         [
             "region" => "header-col-1",
             "template" => "anax/v2/header/site_logo_text",

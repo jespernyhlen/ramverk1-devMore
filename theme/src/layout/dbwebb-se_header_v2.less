@@ -1,25 +1,70 @@
 /**
  * A header style for dbwebb.se.
  */
-@bgColorHeader: #323232;
+@bgColorHeader: #10101061;
 @colorHeader: #ffffff;
 @bgColorHeaderBorder: #666;
 
 .outer-wrap-header {
-    height: @magicNumber * 2;
+    height: @magicNumber * 3;
     margin-bottom: @magicNumber / 2;
 
     img {
         outline: 0;
     }
- }
+}
 
 .inner-wrap-header {
     max-width: none;
 
     .row {
-        max-width: 100%;
+        // max-width: 100%;
+        margin: 0 auto;
+        max-width: 1440px;
     }
+    background: #10101061;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    height: 4.5rem;
+}
+
+.rm-desktop li a:hover {
+    transition: all 0.2s;
+}
+
+.rm-desktop li a:hover,
+.user-navbar-link:hover {
+    text-decoration: none;
+    color: #aaa;
+}
+
+.rm-max.rm-navbar {
+    top: 18px;
+}
+
+.rm-default ul li {
+    border: 1px solid #f2f2f2;
+    background: #f3f3f4;
+}
+
+.rm-default li li {
+    display: block;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.06);
+    min-width: 10em;
+}
+
+.left-nav {
+    position: unset;
+    margin-top: 1.2em;
+}
+
+.user-navbar-link {
+    padding-top: 2em !important;
+    position: relative;
+    font-size: 1.2rem;
+    padding: 1.75em 0.7em 1.75em;
+    font-weight: 200;
+    letter-spacing: 1.5px;
+    transition: all 0.2s;
 }
 
 // @TODO .site-logo-text should be removed when using updated Anax layout.
@@ -27,32 +72,39 @@
 // @TODO .profile should be removed when using updated Anax layout.
 .site-logo-text,
 .region-header-col-1 {
-    #desinax-vgrid .column(5);
+    #desinax-vgrid .column(8);
 }
 
 .navbar2,
 .region-header-col-2 {
-    #desinax-vgrid .column(14);
+    #desinax-vgrid .column(16);
 }
 
 .profile,
 .region-header-col-3 {
-    #desinax-vgrid .column(5);
+    #desinax-vgrid .column(2);
+}
+
+@media screen and (min-width: 1040px) {
+    .profile,
+    .region-header-col-3 {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1300px) {
     .navbar2,
     .region-header-col-2 {
-        #desinax-vgrid .column(17);
+        #desinax-vgrid .column(16);
     }
 
-    .profile,
-    .region-header-col-3 {
-        #desinax-vgrid .column(2);
-    }
+    // .profile,
+    // .region-header-col-3 {
+    //     #desinax-vgrid .column(2);
+    // }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1040px) {
     .site-logo-text,
     .region-header-col-1 {
         #desinax-vgrid .column(6);
@@ -60,7 +112,8 @@
 
     .navbar2,
     .region-header-col-2 {
-        #desinax-vgrid .column(16);
+        // #desinax-vgrid .column(16);
+        display: none;
     }
 }
 

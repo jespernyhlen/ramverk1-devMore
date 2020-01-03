@@ -9,54 +9,47 @@
 /**
  * Normalize and reset the style.
  */
-@import "normalize.css/normalize.less";
-
-
+@import 'normalize.css/normalize.less';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
+/**
+   * Font Awesome.
+   */
+@import '@fortawesome/fontawesome-free/less/fontawesome.less';
+@import '@fortawesome/fontawesome-free/less/solid.less';
+@import '@fortawesome/fontawesome-free/less/brands.less';
 
 /**
- * Font Awesome.
- */
-@import "@fortawesome/fontawesome-free/less/fontawesome.less";
-@import "@fortawesome/fontawesome-free/less/solid.less";
-@import "@fortawesome/fontawesome-free/less/brands.less";
-
-
-
-/**
- * Mixins within the namespace #desinax-mixin.
- * @TODO clean up what mixins are used
- */
-@import "@desinax/mixin/less/clearfix.less";
-@import "@desinax/mixin/less/mixins.less";
-@import "@desinax/mixin/less/css3mixins.less";
+   * Mixins within the namespace #desinax-mixin.
+   * @TODO clean up what mixins are used
+   */
+@import '@desinax/mixin/less/clearfix.less';
+@import '@desinax/mixin/less/mixins.less';
+@import '@desinax/mixin/less/css3mixins.less';
 
 .clearfix() {
     #desinax-mixin.clearfix();
 }
 
-
+/**
+   * Desinax general modules, namespace #desinax-general. (You must enable
+   * the style you want and add layout.)
+   * @TODO check and clean up, add namespace.
+   */
+@import '@desinax/general/less/byline.less';
+@import '@desinax/general/less/gallery.less';
+@import '@desinax/general/less/highlightjs-default.less';
+@import '@desinax/general/less/image-overlay.less';
+@import '@desinax/general/less/notice.less';
+@import '@desinax/general/less/revision.less';
 
 /**
- * Desinax general modules, namespace #desinax-general. (You must enable
- * the style you want and add layout.)
- * @TODO check and clean up, add namespace.
- */
-@import "@desinax/general/less/byline.less";
-@import "@desinax/general/less/gallery.less";
-@import "@desinax/general/less/highlightjs-default.less";
-@import "@desinax/general/less/image-overlay.less";
-@import "@desinax/general/less/notice.less";
-@import "@desinax/general/less/revision.less";
-
-
-
-/**
- * Vertical grid
- */
-@import "@desinax/vertical-grid/less/grid.less";
+   * Vertical grid
+   */
+@import '@desinax/vertical-grid/less/grid.less';
 
 html.vgrid .inner-wrap {
-    @gridImage: "../img/theme/grid_@{columns}x@{columnWidth}x@{gutterWidth}-nomargin.png";
+    @gridImage: '../img/theme/grid_@{columns}x@{columnWidth}x@{gutterWidth}-nomargin.png';
     #desinax-vgrid.showGrid(@gridImage, 1100px);
 
     &.inner-wrap-header,
@@ -65,27 +58,23 @@ html.vgrid .inner-wrap {
     }
 }
 
-
-
 /**
- * Typographic grid in namespace #desinax-hgrid.
- */
-@import "@desinax/typographic-grid/less/typography-font-families.less";
-@import "@desinax/typographic-grid/less/typography-defaults.less";
+   * Typographic grid in namespace #desinax-hgrid.
+   */
+@import '@desinax/typographic-grid/less/typography-font-families.less';
+@import '@desinax/typographic-grid/less/typography-defaults.less';
 
 html.hgrid .inner-wrap {
     #desinax-hgrid.showGridAlt();
 }
 
-
-
 /**
- * Figure and figcaption mixins, namespace #desinax-figure. You must enable
- * the style you want and add layout.
- */
-@import "@desinax/figure/less/asciinema.less";
-@import "@desinax/figure/less/figure.less";
-@import "@desinax/figure/less/codepen.less";
+   * Figure and figcaption mixins, namespace #desinax-figure. You must enable
+   * the style you want and add layout.
+   */
+@import '@desinax/figure/less/asciinema.less';
+@import '@desinax/figure/less/figure.less';
+@import '@desinax/figure/less/codepen.less';
 
 // Enable style from the module and add layout
 figure.figure {
@@ -98,7 +87,7 @@ figure.asciinema {
 }
 
 figure.figure-codepen, // @TODO remove this?
-figure.codepen {
+  figure.codepen {
     &:extend(figure.figure);
     #desinax-figure.codepen();
 }
@@ -108,35 +97,32 @@ img.responsive {
     max-width: 100%;
 }
 
-
-
 /**
- * Links and navigation
- * @TODO check and clean up
- */
+   * Links and navigation
+   * @TODO check and clean up
+   */
 
 // Cleanup theses
-@anchorColor:         #33b;
-@anchorColor2:        #448;
-@anchorColorHover:    #33f;
-@anchorColorActive:   #838;
-@anchorColorVisited:  #838;
+@anchorColor: #140741;
+@anchorColor2: #448;
+@anchorColorHover: #33f;
+@anchorColorActive: #838;
+@anchorColorVisited: #838;
 
-@anchorColorAnonymous:      @colorBody;
+@anchorColorAnonymous: @colorBody;
 @anchorColorAnonymousHover: #00c;
 
-@anchorTabBgColor:          lighten(@anchorColorHover, 35%);
-@anchorTabBgColorHover:     lighten(@anchorColorHover, 30%);
-@anchorTabBgColorActive:    lighten(@anchorColorHover, 35%);
-@anchorTabBgColorSelected:  @bgColorBody;
+@anchorTabBgColor: lighten(@anchorColorHover, 35%);
+@anchorTabBgColorHover: lighten(@anchorColorHover, 30%);
+@anchorTabBgColorActive: lighten(@anchorColorHover, 35%);
+@anchorTabBgColorSelected: @bgColorBody;
 
-
-@import "@desinax/link/less/anchor-header.less";
-@import "@desinax/link/less/breadcrumb.less";
+@import '@desinax/link/less/anchor-header.less';
+@import '@desinax/link/less/breadcrumb.less';
 //@import "@desinax/link/less/links-extra-dbwebb.less";
-@import "@desinax/link/less/list.less";
-@import "@desinax/link/less/next-previous.less";
-@import "@desinax/link/less/toc.less";
+@import '@desinax/link/less/list.less';
+@import '@desinax/link/less/next-previous.less';
+@import '@desinax/link/less/toc.less';
 
 //  breadcrumb.less
 .breadcrumb-list,
@@ -152,42 +138,39 @@ img.responsive {
 .anchor(@anchorColor, @anchorColorHover, @anchorColorVisited);
 
 .footer {
-  .anchor(@anchorColor2)
+    .anchor(@anchorColor2);
 }
 
 .fab.fa-icon:hover {
-    color: green;
+    color: #fff;
 }
 
-
-
 /**
- * Use internal modules
- * @TODO check and clean up and explain what this style does.
- */
-@import "modules/blog.less";
-@import "modules/forms.less";
-@import "modules/linkedin.less";
+   * Use internal modules
+   * @TODO check and clean up and explain what this style does.
+   */
+@import 'modules/blog.less';
+@import 'modules/forms.less';
+@import 'modules/linkedin.less';
 //@import "modules/variables.less"; // OBSOLETE
 
-
+/**
+   * Base style to affect HTML elements on a general scale.
+   */
+@import 'base/base.less';
 
 /**
- * Base style to affect HTML elements on a general scale.
- */
-@import "base/base.less";
-
-
+   * Layout style for general structure of header, navbar, main, footer
+   * and other regions of the page including route specific styles.
+   */
+@import 'layout/layout_v2.less';
+@import 'layout/dbwebb-se_v2.less'; // Rearrange and move classic style to layout.less
+@import 'layout/regions.less';
+@import 'layout/custom.less';
 
 /**
- * Layout style for general structure of header, navbar, main, footer
- * and other regions of the page including route specific styles.
- */
-@import "layout/layout_v2.less";
-@import "layout/dbwebb-se_v2.less"; // Rearrange and move classic style to layout.less
-@import "layout/regions.less";
-
-
+   * Style for games.
+   */
 
 .site-logo {
     position: absolute;
@@ -196,19 +179,31 @@ img.responsive {
 }
 
 .site-logo-text {
-    font-family: @fontFamilySiteLogo;
-    padding-left: 0.2em;
+    font-family: Lato, sans-serif;
+    line-height: 2;
+    font-weight: 100;
+    font-size: 2em;
+    padding: 0 0.5em;
+    width: fit-content;
+}
+
+.site-logo-text a {
+    color: #eee;
 }
 
 .rm-navbar {
     text-align: center;
-    font-family: @fontFamilyCambria;
-    font-size: 1.5em;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.4em;
     line-height: 0;
 }
 
+.rm-navbar ul {
+    text-align: right;
+}
+
 .rm-menu-button {
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .rm-desktop li ul {
@@ -216,34 +211,54 @@ img.responsive {
 }
 
 .wrap-sidebar .block h4 {
-    border-top: 1px solid #ccc;
-    background-image: linear-gradient(to right, #fff, #ccc);
+    border: 0;
+    font-weight: 500;
+    margin: 0;
+    font-size: 1rem;
+    color: #bbb;
+    padding: 0.6rem 0.8rem 0.67rem;
+    background: #2d333a;
+    border-bottom: 1px solid #1a1d22;
+    border-radius: 3px;
+    text-transform: uppercase;
 }
 
+pre {
+    font-size: 16px;
+}
 
+#form-element-username:-internal-autofill-selected {
+    background-color: #373a3e00 !important;
+    background-image: none !important;
+    color: #fff !important;
+}
+
+.rm-max .rm-small .rm-button.rm-clicked {
+    color: #ffffff !important;
+}
 
 /**
- * My settings.
- */
+   * My settings.
+   */
 @bgColorHtml: #424242;
-@bgColorBody: #fff;
-@colorBody:   #111;
+@bgColorBody: #17191c;
+@colorBody: #ddd;
 
-@fontFamilyHeadings: @fontFamilyCambria;
-@fontFamilyBody:     @fontFamilyVerdana;
-@fontFamilyCode:     @fontFamilyCourier;
+@fontFamilyHeadings: 'Lato', sans-serif;
+@fontFamilyBody: 'Lato', sans-serif;
+@fontFamilyCode: @fontFamilyCourier;
 
 @colorH1BorderBottom: #666; // Add to h4 also
 @colorH2BorderBottom: #ccc;
 @colorH3BorderBottom: #eee;
 @colorH4BorderBottom: #eee;
 
-@magicNumber:  24px;
-@fontSizeBody: 16px;
+@magicNumber: 24px;
+@fontSizeBody: 14px;
 
-@columnWidth:   30;
-@gutterWidth:   10;
-@columns:       24;
-@gridType:      "float"; // "flex"
+@columnWidth: 30;
+@gutterWidth: 10;
+@columns: 24;
+@gridType: 'float'; // "flex"
 
-@navbarFontFamily: @fontFamilyTimesNewRoman;
+@navbarFontFamily: 'Lato', sans-serif;

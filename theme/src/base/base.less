@@ -1,8 +1,8 @@
 /**
  * Base style to affect HTML elements on a general scale.
  */
-@bgColorHtml: #424242;
-@bgColorBody: #fff;
+@bgColorHtml: #f3f3f4;
+@bgColorBody: #eaeaea;
 @colorBody: #333;
 @baseFontSize: 100.01%;
 
@@ -11,7 +11,7 @@
 }
 
 html {
-    overflow-y: scroll;  // Always show scrollbar to avoid flickr
+    overflow-y: scroll; // Always show scrollbar to avoid flickr
     background-color: @bgColorHtml;
 }
 
@@ -21,6 +21,8 @@ body {
     color: @colorBody;
     background-color: @bgColorBody;
     #desinax-hgrid.font(@fontSizeBody);
+    min-height: 100vh;
+    font-size: 16px;
 }
 
 // Affects all basic typographic elements

@@ -74,6 +74,25 @@ class Navbar
      */
     public function createMenuWithSubMenus($config)
     {
+        if ($this->di->get("session")->get("active_user")) {
+            array_push($config["items"], [
+                "text" => "Profile",
+                "url" => "user/profile",
+                "title" => "User profile",
+            ]);
+            array_push($config["items"], [
+                "text" => "Logout",
+                "url" => "user/logout",
+                "title" => "Logout",
+            ]);
+        } else {
+            array_push($config["items"], [
+                "text" => "Login",
+                "url" => "user/login",
+                "title" => "Login",
+            ]);
+        }
+       
         $default = [
             "id"      => null,
             "class"   => null,

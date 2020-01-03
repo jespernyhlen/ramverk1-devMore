@@ -6,10 +6,8 @@
 /** ==============================================================
  * Base
  */
-@colorAccentHeader1:  #3B440D;
-@colorAccentHeader2:  #9FB129;
-@colorAccentHeader3:  #d5e283;
-
+@colorAccentHeader1: #666;
+@colorAccentHeader2: #fff;
 
 .linkAccent() {
     a {
@@ -20,19 +18,14 @@
 
     a:hover {
         color: @colorAccentHeader1;
-        text-shadow: 0px 0px 1px @colorAccentHeader2;
         text-decoration: underline;
     }
 }
 
-
-
 /** ==============================================================
- * Header 
+ * Header
  */
-@import "layout/dbwebb-se_header_v2.less";
-
-
+@import 'layout/dbwebb-se_header_v2.less';
 
 /** --------------------------------------------------------------
 * Logo and logo text (PERHAPS MOVE TO OWN MODULE/LAYOUT FILE)
@@ -40,7 +33,6 @@
 .site-logo-text {
     font-size: 42px;
     line-height: 1;
-    text-shadow: 2px -2px 2px #ccc;
     //padding-left: 8px;
 
     a {
@@ -50,7 +42,6 @@
 
         &:hover {
             color: @colorAccentHeader1;
-            text-shadow: 2px -2px 2px @colorAccentHeader2;
         }
     }
 }
@@ -130,8 +121,6 @@
     margin-top: -2 * @magicNumber;
 }
 
-
-
 /** ==============================================================
  * Column above and below
  *
@@ -140,8 +129,6 @@
     margin-bottom: @magicNumber;
 }
 
-
-
 /** ==============================================================
  * Main
  *
@@ -149,8 +136,6 @@
 .inner-wrap-main {
     padding-bottom: @magicNumber * 2;
 }
-
-
 
 /** ==============================================================
  * Article and Sidebar blocks
@@ -166,34 +151,31 @@
 
 .article {
     margin-bottom: @magicNumber * 3;
- }
+}
 
 .article,
 .sidebar,
 .columns-above,
 .columns-below {
-     .block {
-         margin-bottom: @magicNumber * 2;
+    .block {
+        margin-bottom: @magicNumber * 2;
 
-         h4 {
-             border-top: 1px solid @blockBorderColor;
-             background-color: @blockBgColor;
-             #gradient .horizontal(@blockGradientColorStart, @blockGradientColorEnd);
-             .anchorAnonymous();
-             .linkAccent();
-         }
-     }
- }
-
-
+        h4 {
+            border-top: 1px solid @blockBorderColor;
+            background-color: @blockBgColor;
+            #gradient
+                .horizontal(@blockGradientColorStart, @blockGradientColorEnd);
+            .anchorAnonymous();
+            .linkAccent();
+        }
+    }
+}
 
 /** ==============================================================
  * The footer column area.
  *
  */
- @import "layout/dbwebb-se_footer.less";
-
-
+@import 'layout/dbwebb-se_footer.less';
 
 /** ==============================================================
  * Route specific style.
