@@ -58,6 +58,8 @@ class CreateForm extends FormModel
         $answer->questionId  = $this->questionId;
         $answer->username  = $this->username;
         $answer->message = $this->form->value("message");
+        $answer->points = 0;
+
         
         if (strlen($answer->message) > 2000) {
             $this->form->rememberValues();
@@ -66,7 +68,7 @@ class CreateForm extends FormModel
         }
         $answer->save();
 
-        $user = $answer->getUser();
+        $user = $answer->getUser($this->username);
         $user->answers++;
         $user->score = $user->score + 5;
         $user->save();

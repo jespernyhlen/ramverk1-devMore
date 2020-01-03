@@ -125,6 +125,10 @@ class CreateForm extends FormModel
         $user->setGravatar($email);
         $user->setPassword($password);
         $user->score = 0;
+        $user->posts = 0;
+        $user->answers = 0;
+
+
 
         $user->save();
         $this->form->addOutput("User successfully registered");

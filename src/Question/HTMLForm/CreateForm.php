@@ -92,7 +92,6 @@ class CreateForm extends FormModel
 
         $stripped = str_replace(' ', '', $this->form->value("tags"));
         $tagList = explode(",", $stripped);
-        var_dump($tagList);
         foreach (array_unique($tagList) as $tagItem) {
             if (!$tagItem == "") {
                 $tag = new Tag();

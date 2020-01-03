@@ -5,8 +5,6 @@ namespace Jen\Answer;
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Jen\Answer\HTMLForm\CreateForm;
-use Jen\Answer\HTMLForm\EditForm;
-use Jen\Answer\HTMLForm\DeleteForm;
 use Jen\Answer\HTMLForm\UpdateForm;
 use Jen\Tag\Tag;
 use Jen\User\User;
@@ -28,7 +26,7 @@ class AnswerController implements ContainerInjectableInterface
         $session = $this->di->get("session");
 
         if (!$session->get("activeUser") && !$session->get("username")) {
-            return $this->di->response->redirect("user/login");
+            return $this->di->get('response')->redirect("user/login");
         }
     }
 
@@ -74,7 +72,8 @@ class AnswerController implements ContainerInjectableInterface
         $answerInfo = $answer->findById($id);
 
         if ($this->di->get("session")->get("username") !== $answerInfo->username) {
-            return $this->di->response->redirect("");
+            return $this->di->get('response')->redirect("");
+
         }
 
         $form = new UpdateForm($this->di, $id);
@@ -106,7 +105,7 @@ class AnswerController implements ContainerInjectableInterface
         $request        = $this->di->get("request");
         $id             = $request->getPost("id");
         $returnLocation = $request->getPost("location");
-        $postedUsername = $request->getPost("posted_username");
+        $postedUsername = $request->getPost("postedUsername");
         $answer         = new Answer();
         $answer->setDb($this->di->get("dbqb"));
         $answer->acceptAnswer($id);

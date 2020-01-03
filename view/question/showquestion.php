@@ -44,7 +44,7 @@ endif;
                 <input type="hidden" name="vote"value="1"/>
                 <input type="hidden" name="type"value="question"/>
                 <input type="hidden" name="id" value="<?= $question->id ?>"/>
-                <input type="hidden" name="questionUsername" value="<?= $question->username ?>"/>
+                <input type="hidden" name="postedUsername" value="<?= $question->username ?>"/>
                 <button class="btn-no-show"><div class="arrow-up"></div></button>
             </form>
             <p class="post-score"><?= $question->points ?></p>

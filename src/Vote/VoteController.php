@@ -29,7 +29,7 @@ class VoteController implements ContainerInjectableInterface
         // $this->checkUser();
         $session = $this->di->get("session");
         if (!$session->get("activeUser")) {
-            return $this->di->response->redirect("user/login");
+            return $this->di->get('response')->redirect("user/login");
         }
 
         $request         = $this->di->get("request");
@@ -43,7 +43,7 @@ class VoteController implements ContainerInjectableInterface
         $vote->setDb($this->di->get("dbqb"));
         $voteSuccess = $vote->updatePoints($username, $id, $type);
 
-        if ($voteSuccess && $postedUsername !== $session->get("username")) {
+        if ($voteSuccess && $postedUsername !== $username) {
             switch ($type) {
                 case "question":
                     $question = new Question();
@@ -73,6 +73,6 @@ class VoteController implements ContainerInjectableInterface
             $user->incVotes($username);
         }
 
-        return $this->di->response->redirect("{$returnLocation}");
+        return $this->di->get('response')->redirect("{$returnLocation}");
     }
 }

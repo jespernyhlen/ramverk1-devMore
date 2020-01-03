@@ -23,6 +23,8 @@ class User extends ActiveRecordModel
     public $presentation;
     public $email;
     public $score;
+    public $posts;
+    public $answers;
     public $password;
     public $gravatar;
 
@@ -114,6 +116,8 @@ class User extends ActiveRecordModel
     */
     public function getRankTitle($score)
     {
+        $rank = "";
+        
         if ($score <= 15) {
             $rank = "Newcomer";
         } elseif ($score <= 30) {

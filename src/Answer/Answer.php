@@ -19,8 +19,10 @@ class Answer extends ActiveRecordModel
      * Columns in the table.
      */
     public $id;
+    public $username;
     public $questionId;
     public $message;
+    public $points;
 
     /**
     * Get answers.
@@ -39,19 +41,6 @@ class Answer extends ActiveRecordModel
     }
 
     /**
-    * Get user of comment.
-    *
-    * @return User
-    */
-    public function getUser()
-    {
-        $user = new User();
-        $user->setDb($this->db);
-        $user->find("username", $this->username);
-        return $user;
-    }
-
-    /**
     * Get answers.
     *
     * @return array
@@ -63,6 +52,20 @@ class Answer extends ActiveRecordModel
         $answers = $answer->findAllWhere("questionId = ?", $questId);
         
         return $answers;
+    }
+
+    /**
+    * Get user of comment.
+    *
+    * @return User
+    */
+    public function getUser($username)
+    {
+        $user = new User();
+        $user->setDb($this->db);
+        $user->find("username", $username);
+        
+        return $user;
     }
 
     /**

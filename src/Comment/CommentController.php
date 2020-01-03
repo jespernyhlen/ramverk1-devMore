@@ -5,8 +5,6 @@ namespace Jen\Comment;
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Jen\Comment\HTMLForm\CreateForm;
-use Jen\Comment\HTMLForm\EditForm;
-use Jen\Comment\HTMLForm\DeleteForm;
 use Jen\Comment\HTMLForm\UpdateForm;
 use Jen\Tag\Tag;
 
@@ -27,7 +25,7 @@ class CommentController implements ContainerInjectableInterface
         $session = $this->di->get("session");
 
         if (!$session->get("activeUser") && !$session->get("username")) {
-            return $this->di->response->redirect("user/login");
+            return $this->di->get('response')->redirect("user/login");
         }
     }
 
@@ -44,8 +42,8 @@ class CommentController implements ContainerInjectableInterface
         $username = $session->get("username");
 
         $values = [
-            "questionId" => $this->di->request->getGet("questionId") ?? null,
-            "answerId" => $this->di->request->getGet("answerId") ?? null
+            "questionId" => $this->di->get('request')->getGet("questionId") ?? null,
+            "answerId" => $this->di->get('request')->getGet("answerId") ?? null
         ];
 
         $form = new CreateForm($this->di, $username, $values);
@@ -77,7 +75,7 @@ class CommentController implements ContainerInjectableInterface
         $commentInfo = $comment->findById($id);
 
         if (!$commentInfo->id || $this->di->get("session")->get("username") !== $commentInfo->username) {
-            return $this->di->response->redirect("");
+            return $this->di->get('response')->redirect("");
         }
 
         $form = new UpdateForm($this->di, $id);

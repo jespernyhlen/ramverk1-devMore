@@ -29,7 +29,7 @@ class Tag extends ActiveRecordModel
     /**
     * Get tag.
     *
-    * @return Tag
+    * @return array
     */
     public function convertTags($questId)
     {
