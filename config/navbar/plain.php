@@ -9,29 +9,29 @@ return [
     // Here comes the menu items/structure
     "items" => [
         [
-            "text" => "Hem",
+            "text" => "Home",
             "url" => "",
-            "title" => "Första sidan, börja här.",
+            "title" => "Homepage.",
         ],
         [
-            "text" => "Redovisning",
-            "url" => "redovisning",
-            "title" => "Redovisningstexter från kursmomenten.",
+            "text" => "About",
+            "url" => "about",
+            "title" => "About devMore",
         ],
         [
-            "text" => "Om",
-            "url" => "om",
-            "title" => "Om denna webbplats.",
+            "text" => "Users",
+            "url" => "user",
+            "title" => "All users",
         ],
         [
-            "text" => "Styleväljare",
-            "url" => "style",
-            "title" => "Välj stylesheet.",
+            "text" => "Questions",
+            "url" => "question",
+            "title" => "All questions",
         ],
         [
-            "text" => "Verktyg",
-            "url" => "verktyg",
-            "title" => "Verktyg och möjligheter för utveckling.",
+            "text" => "Tags",
+            "url" => "tag/search",
+            "title" => "Search tags",
         ],
     ],
 ];

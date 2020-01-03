@@ -13,6 +13,26 @@ return [
             "text" => "Home",
             "url" => "",
             "title" => "Homepage.",
-        ]
+        ],
+        [
+            "text" => "About",
+            "url" => "about",
+            "title" => "About devMore",
+        ],
+        [
+            "text" => "Users",
+            "url" => "user",
+            "title" => "All users",
+        ],
+        [
+            "text" => "Questions",
+            "url" => "question",
+            "title" => "All questions",
+        ],
+        [
+            "text" => "Tags",
+            "url" => "tag/search",
+            "title" => "Search tags",
+        ],
     ],
 ];
