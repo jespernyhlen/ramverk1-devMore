@@ -30,7 +30,7 @@ $urlToDelete = url("question/delete");
 <div class="question-answers">
     <?php if (!$answers) : ?>
         <p class="no-comments">There are no answers to this topic.</p>
-    <?php
+        <?php
         return;
     endif;
     ?>
@@ -55,7 +55,7 @@ $urlToDelete = url("question/delete");
                         <input type="hidden" name="vote"value="1"/>
                         <input type="hidden" name="type"value="answer"/>
                         <input type="hidden" name="id" value="<?= $answer->id ?>"/>
-                        <input type="hidden" name="posted_username" value="<?= $answer->username ?>"/>
+                        <input type="hidden" name="postedUsername" value="<?= $answer->username ?>"/>
                         <button class="btn-no-show"><div class="arrow-up"></div></button>
                     </form>
                     <p class="post-score"><?= $answer->points ?></p>
@@ -64,7 +64,7 @@ $urlToDelete = url("question/delete");
                         <input type="hidden" name="vote" value="-1"/>
                         <input type="hidden" name="type"value="answer"/>
                         <input type="hidden" name="id" value="<?= $answer->id ?>"/>
-                        <input type="hidden" name="posted_username" value="<?= $answer->username ?>"/>
+                        <input type="hidden" name="postedUsername" value="<?= $answer->username ?>"/>
                         <button class="btn-no-show"><div class="arrow-down"></div></button>
                     </form>
                 </div>
@@ -79,7 +79,7 @@ $urlToDelete = url("question/delete");
                             <form name="accept-answer" action="<?= url("answer/acceptanswer"); ?>" method="post">
                                 <input type="hidden" name="location"value="question/show/<?= $question->id ?>"/>
                                 <input type="hidden" name="id" value="<?= $answer->id ?>"/>
-                                <input type="hidden" name="posted_username" value="<?= $answer->username ?>"/>
+                                <input type="hidden" name="postedUsername" value="<?= $answer->username ?>"/>
 
                                 <button class="btn-no-show"><i class='fas fa-check accept'></i> </button>
                             </form>
@@ -91,7 +91,7 @@ $urlToDelete = url("question/delete");
                     </div>
                       
                     <div class="text-right">
-                        <a href="<?= url("comment/create?question_id={$question->id}&answer_id={$answer->id}"); ?>"> Comment</a> 
+                        <a href="<?= url("comment/create?questionId={$question->id}&answerId={$answer->id}"); ?>"> Comment</a> 
                         <?php if ($activeUser == $answer->username) : ?>
                             | <a href="<?= url("answer/update/{$answer->id}"); ?>"> Edit</a>
                         <?php endif; ?> 
@@ -105,7 +105,7 @@ $urlToDelete = url("question/delete");
                                         <input type="hidden" name="vote"value="1"/>
                                         <input type="hidden" name="type"value="comment"/>
                                         <input type="hidden" name="id" value="<?= $c2c->id ?>"/>
-                                        <input type="hidden" name="posted_username" value="<?= $c2c->username ?>"/>
+                                        <input type="hidden" name="postedUsername" value="<?= $c2c->username ?>"/>
                                         <button class="btn-no-show"><div class="arrow-up"></div></button>
                                     </form>
                                     <p class="post-score"><?= $c2c->points ?></p>
@@ -114,7 +114,7 @@ $urlToDelete = url("question/delete");
                                         <input type="hidden" name="vote" value="-1"/>
                                         <input type="hidden" name="type"value="comment"/>
                                         <input type="hidden" name="id" value="<?= $c2c->id ?>"/>
-                                        <input type="hidden" name="posted_username" value="<?= $c2c->username ?>"/>
+                                        <input type="hidden" name="postedUsername" value="<?= $c2c->username ?>"/>
                                         <button class="btn-no-show"><div class="arrow-down"></div></button>
                                     </form>
                                 </div>

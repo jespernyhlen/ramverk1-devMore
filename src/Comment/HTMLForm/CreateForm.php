@@ -22,8 +22,8 @@ class CreateForm extends FormModel
     {
         parent::__construct($di);
         $this->username = $username;
-        $this->question_id = $values["question_id"];
-        $this->answer_id = $values["answer_id"];
+        $this->questionId = $values["questionId"];
+        $this->answerId = $values["answerId"];
 
         $this->form->create(
             [
@@ -57,8 +57,8 @@ class CreateForm extends FormModel
         $comment = new Comment();
         $comment->setDb($this->di->get("dbqb"));
         $comment->username  = $this->username;
-        $comment->question_id  = $this->question_id;
-        $comment->answer_id  = $this->answer_id;
+        $comment->questionId  = $this->questionId;
+        $comment->answerId  = $this->answerId;
         $comment->message = $this->form->value("message");
 
         if (strlen($comment->message) > 200) {
@@ -83,6 +83,6 @@ class CreateForm extends FormModel
      */
     public function callbackSuccess()
     {
-        $this->di->get("response")->redirect("question/show/{$this->question_id}")->send();
+        $this->di->get("response")->redirect("question/show/{$this->questionId}")->send();
     }
 }

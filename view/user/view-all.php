@@ -12,7 +12,7 @@ $users = isset($users) ? $users : null;
         <p>Sorry, there were no results for user <b>“ <?= $searchQuery ?> ”</b></p>
         <a href="<?= url("user"); ?>">View all users</a>
     </div>
-<?php
+    <?php
     return;
 endif;
 ?>

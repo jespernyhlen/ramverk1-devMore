@@ -58,12 +58,12 @@ class Question extends ActiveRecordModel
     *
     * @return array
     */
-    public function getTags($question_id)
+    public function getTags($questionId)
     {
         $tag = new Tag();
         $tag->setDb($this->db);
 
-        return $tag->findAllWhere("question_id = ?", $question_id);
+        return $tag->findAllWhere("questionId = ?", $questionId);
     }
 
     /**
@@ -76,17 +76,17 @@ class Question extends ActiveRecordModel
         $comment = new Comment();
         $comment->setDb($this->db);
 
-        return $comment->findAllWhere("question_id = ?", $this->id);
+        return $comment->findAllWhere("questionId = ?", $this->id);
     }
 
     /**
     * Update points for question.
     *
-    * @return 
+    * @return
     */
-    public function updatePoints($question_id, $value)
+    public function updatePoints($questionId, $value)
     {
-        $this->find("id", $question_id);
+        $this->find("id", $questionId);
         $this->points = $this->points + $value;
         $this->save();
 

@@ -6,5 +6,5 @@ $form = isset($form) ? $form : null;
 
 ?>
 
-<?= $form ?>
+<?= $form;
 

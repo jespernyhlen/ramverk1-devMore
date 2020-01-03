@@ -8,7 +8,7 @@ $users = isset($users) ? $users : null;
 
 <?php if (!$users) : ?>
     <p>There are no results to show.</p>
-<?php
+    <?php
     return;
 endif;
 ?>

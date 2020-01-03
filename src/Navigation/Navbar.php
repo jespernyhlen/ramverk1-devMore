@@ -74,7 +74,7 @@ class Navbar
      */
     public function createMenuWithSubMenus($config)
     {
-        if ($this->di->get("session")->get("active_user")) {
+        if ($this->di->get("session")->get("activeUser")) {
             array_push($config["items"], [
                 "text" => "Profile",
                 "url" => "user/profile",

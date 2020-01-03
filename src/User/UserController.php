@@ -27,7 +27,7 @@ class UserController implements ContainerInjectableInterface
     {
         $session = $this->di->get("session");
 
-        if (!$session->get("active_user") && !$session->get("username")) {
+        if (!$session->get("activeUser") && !$session->get("username")) {
             return $this->di->response->redirect("user/login");
         }
     }
@@ -141,11 +141,9 @@ class UserController implements ContainerInjectableInterface
         $this->checkUser();
 
         $session = $this->di->get("session");
-        $page = $this->di->get("page");
-
-        $session->delete("user_id");
+        $session->delete("userId");
         $session->delete("username");
-        $session->delete("active_user");
+        $session->delete("activeUser");
 
         return $this->di->response->redirect("user/login");
     }
@@ -188,7 +186,9 @@ class UserController implements ContainerInjectableInterface
         $user->setDb($this->di->get("dbqb"));
         $username = $user->findById($userId)->username;
 
-        if ($username !== $session->get("username")) return $this->di->response->redirect("");
+        if ($username !== $session->get("username")) {
+            return $this->di->response->redirect("");
+        }
 
         $page = $this->di->get("page");
         $form = new UpdateForm($this->di, $userId);
@@ -242,7 +242,9 @@ class UserController implements ContainerInjectableInterface
 
         $userInfo = $user->findWhere("username = ?", $username);
 
-        if (!$userInfo->id) return $this->di->response->redirect("");
+        if (!$userInfo->id) {
+            return $this->di->response->redirect("");
+        }
 
         $userInfo->rankTitle = $user->getRankTitle($userInfo->score);
         $question = new Question();
@@ -254,7 +256,7 @@ class UserController implements ContainerInjectableInterface
         $answers = $answer->findAllWhere("username = ?", $username);
 
         foreach ($answers as $answ) {
-            $answerQuestion = $question->findWhere("id = ?", $answ->question_id);
+            $answerQuestion = $question->findWhere("id = ?", $answ->questionId);
             $answ->questionTitle = $answerQuestion->title;
             $answ->questionId = $answerQuestion->id;
         }

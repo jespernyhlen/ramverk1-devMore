@@ -72,7 +72,7 @@ class TagController implements ContainerInjectableInterface
         foreach ($tagResults as $result) {
             $question = new Question();
             $question->setDb($this->di->get("dbqb"));
-            $question = $question->findWhere("id = ?", $result->question_id);
+            $question = $question->findWhere("id = ?", $result->questionId);
     
             if (!in_array($question->id, $selectedQuestionsID)) {
                 $result->question = $question;

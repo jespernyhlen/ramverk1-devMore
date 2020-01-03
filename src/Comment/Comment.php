@@ -21,8 +21,8 @@ class Comment extends ActiveRecordModel
      * @var integer $id primary key auto incremented.
      */
     public $id;
-    public $question_id;
-    public $answer_id;
+    public $questionId;
+    public $answerId;
     public $message;
 
     /**
@@ -60,11 +60,11 @@ class Comment extends ActiveRecordModel
     *
     * @return Comment
     */
-    public function getCommentsByQuestion($question_id)
+    public function getCommentsByQuestion($questId)
     {
         $comment = new Comment();
         $comment->setDb($this->db);
-        $comments = $comment->findAllWhere("question_id = ?", $question_id);
+        $comments = $comment->findAllWhere("questionId = ?", $questId);
         
         return $comments;
     }
@@ -72,11 +72,11 @@ class Comment extends ActiveRecordModel
     /**
     * Update points.
     *
-    * @return 
+    * @return
     */
-    public function updatePoints($comment_id, $value)
+    public function updatePoints($commentId, $value)
     {
-        $this->find("id", $comment_id);
+        $this->find("id", $commentId);
         $this->points = $this->points + $value;
         $this->save();
 

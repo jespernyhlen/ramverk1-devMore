@@ -18,11 +18,11 @@ class CreateForm extends FormModel
      *
      * @param Psr\Container\ContainerInterface $di a service container
      */
-    public function __construct(ContainerInterface $di, $username, $question_id)
+    public function __construct(ContainerInterface $di, $username, $questionId)
     {
         parent::__construct($di);
         $this->username = $username;
-        $this->question_id = $question_id;
+        $this->questionId = $questionId;
 
         $this->form->create(
             [
@@ -55,7 +55,7 @@ class CreateForm extends FormModel
     {
         $answer = new Answer();
         $answer->setDb($this->di->get("dbqb"));
-        $answer->question_id  = $this->question_id;
+        $answer->questionId  = $this->questionId;
         $answer->username  = $this->username;
         $answer->message = $this->form->value("message");
         
@@ -81,6 +81,6 @@ class CreateForm extends FormModel
      */
     public function callbackSuccess()
     {
-        $this->di->get("response")->redirect("question/show/{$this->question_id}")->send();
+        $this->di->get("response")->redirect("question/show/{$this->questionId}")->send();
     }
 }

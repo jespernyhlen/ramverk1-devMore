@@ -15,7 +15,6 @@ use Jen\Answer\Answer;
 use Jen\Comment\Comment;
 use Jen\Vote;
 
-
 /**
  * Question controller
  */
@@ -32,7 +31,7 @@ class QuestionController implements ContainerInjectableInterface
     {
         $session = $this->di->get("session");
 
-        if (!$session->get("active_user") && !$session->get("username")) {
+        if (!$session->get("activeUser") && !$session->get("username")) {
             return $this->di->response->redirect("user/login");
         }
     }
@@ -86,7 +85,9 @@ class QuestionController implements ContainerInjectableInterface
         $question->setDb($this->di->get("dbqb"));
         $questionInfo = $question->findById($id);
 
-        if (!$questionInfo || $this->di->get("session")->get("username") !== $questionInfo->username) return $this->di->response->redirect("question");
+        if (!$questionInfo || $this->di->get("session")->get("username") !== $questionInfo->username) {
+            return $this->di->response->redirect("question");
+        }
 
         $form = new UpdateForm($this->di, $id);
         $form->check();
@@ -111,15 +112,12 @@ class QuestionController implements ContainerInjectableInterface
      */
     public function searchAction() : object
     {
-        $page = $this->di->get("page");
         $sortby = $this->di->get("request")->getGet("sortby") ?? "created DESC";
-       
         $question = new Question();
         $question->setDb($this->di->get("dbqb"));
         $questions = $question->findAllOrderBy($sortby);
         
         return $this->questionView($questions);
-
     }
 
      /**
@@ -153,22 +151,24 @@ class QuestionController implements ContainerInjectableInterface
         $question->setDb($this->di->get("dbqb"));
         $questionInfo = $question->findById($id);
 
-        if (!$questionInfo->id) return $this->di->response->redirect("");
+        if (!$questionInfo->id) {
+            return $this->di->response->redirect("");
+        }
 
         $answer = new Answer();
         $answer->setDb($this->di->get("dbqb"));
-        $answers = $answer->findAllWhereOrderBy("question_id = ?", $id, $sortby);
+        $answers = $answer->findAllWhereOrderBy("questionId = ?", $id, $sortby);
 
         foreach ($answers as $answ) {
             $user = new User();
             $user->setDb($this->di->get("dbqb"));
             $comment = new Comment();
             $comment->setDb($this->di->get("dbqb"));
-            $answ->comment = $comment->findAllWhere("question_id = ? and answer_id = ?", [$id, $answ->id]);
+            $answ->comment = $comment->findAllWhere("questionId = ? and answerId = ?", [$id, $answ->id]);
         }
         $tag = new Tag();
         $tag->setDb($this->di->get("dbqb"));
-        $tags = $tag->findAllWhere("question_id = ?", $id);
+        $tags = $tag->findAllWhere("questionId = ?", $id);
 
         $contentInfo = [
             "questionOwner" => $this->di->get("session")->get("username") == $questionInfo->username,
@@ -206,8 +206,8 @@ class QuestionController implements ContainerInjectableInterface
         foreach ($questions as $q) {
             $answer = new Answer();
             $answer->setDb($this->di->get("dbqb"));
-            $q->answersAmount = count($answer->findAllWhere("question_id = ?", $q->id));
-            $q->tags = $tag->findAllWhere("question_id = ?", $q->id);
+            $q->answersAmount = count($answer->findAllWhere("questionId = ?", $q->id));
+            $q->tags = $tag->findAllWhere("questionId = ?", $q->id);
         };
 
         $form = new SearchForm($this->di);
@@ -227,25 +227,3 @@ class QuestionController implements ContainerInjectableInterface
         ]);
     }
 }
-
-
-
-    // /**
-    //  * Handler with form to delete an item.
-    //  *
-    //  * @return object as a response object
-    //  */
-    // public function deleteAction() : object
-    // {
-    //     $page = $this->di->get("page");
-    //     $form = new DeleteForm($this->di);
-    //     $form->check();
-
-    //     $page->add("question/delete", [
-    //         "form" => $form->getHTML(),
-    //     ]);
-
-    //     return $page->render([
-    //         "title" => "Delete an item",
-    //     ]);
-    // }

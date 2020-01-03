@@ -16,7 +16,7 @@ $tagResults = isset($tagResults) ? $tagResults : null;
         <p>Sorry, there were no results for tag <b>“ <?= $searchQuery ?> ”</b></p>
         <a href="<?= url("tag/search"); ?>">View all tags</a>
     </div>
-<?php
+    <?php
     return;
 endif;
 ?>

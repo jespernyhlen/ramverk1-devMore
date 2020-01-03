@@ -33,7 +33,7 @@ $urlToDelete = url("question/delete");
         <p>Sorry, there were no results for post including <b>“ <?= $searchQuery ?> ”</b></p>
         <a href="<?= url("question/search"); ?>">View all topics</a>
     </div>
-<?php
+    <?php
     return;
 endif;
 ?>
@@ -41,8 +41,6 @@ endif;
 <div class="view-all-questions">
 <?php echo ($searchQuery) ? "<h1 class='main-title'>Topics including “ <b>$searchQuery</b> “</h1>" : "<h1 class='main-title'>All topics</h1>" ?>
 
-<!-- echo empty($address['street2']) ? "Street2 is empty!" : $address['street2']; -->
-    
     <div class="question-create-btn-container">
         <a href="<?= $urlToCreate ?>">Create new topic</a>
         <form method="get" class="sortby" action="#" name="myform">
@@ -66,7 +64,7 @@ endif;
                         <input type="hidden" name="vote"value="1"/>
                         <input type="hidden" name="type"value="question"/>
                         <input type="hidden" name="id" value="<?= $question->id ?>"/>
-                        <input type="hidden" name="posted_username" value="<?= $question->username ?>"/>
+                        <input type="hidden" name="postedUsername" value="<?= $question->username ?>"/>
                         <button class="btn-no-show"><div class="arrow-up"></div></button>
                     </form>
                     <p class="post-score"><?= $question->points ?></p>
@@ -75,7 +73,7 @@ endif;
                         <input type="hidden" name="vote" value="-1"/>
                         <input type="hidden" name="type"value="question"/>
                         <input type="hidden" name="id" value="<?= $question->id ?>"/>
-                        <input type="hidden" name="posted_username" value="<?= $question->username ?>"/>
+                        <input type="hidden" name="postedUsername" value="<?= $question->username ?>"/>
                         <button class="btn-no-show"><div class="arrow-down"></div></button>
                     </form>
                 </div>
@@ -86,16 +84,17 @@ endif;
                                 <?php foreach ($question->tags as $tag) : ?>
                                     <a class="question-tag" href="<?= url("tag/result/{$tag->tag}"); ?>">#<?= $tag->tag ?></a>
                                 <?php endforeach; ?>
-                        <?php
-                            endif;
+                            <?php
+                        endif;
                         ?>
                     </div>
 
-                    <a href="<?= url("question/show/{$question->id}"); ?>"><div class="question-content overview">
-                        <h5><?= $question->title ?></h5>
-                        <?php $preview = (strlen($question->message) > 300 ? substr($question->message, 0, 300) . "..." : $question->message); ?>
-                        <p class="question-message"><?= $filter->parse($preview, ["markdown"])->text ?></p>
-                    </div></a>
+                    <a href="<?= url("question/show/{$question->id}"); ?>">
+                        <div class="question-content overview">
+                            <h5><?= $question->title ?></h5>
+                            <?php $preview = (strlen($question->message) > 300 ? substr($question->message, 0, 300) . "..." : $question->message); ?>
+                            <p class="question-message"><?= $filter->parse($preview, ["markdown"])->text ?></p>
+                        </div></a>
                     <a href="<?= url("question/show/{$question->id}"); ?>"><div class="comment-amount"><i class="fas fa-comment"></i> <?= $question->answersAmount ?> Answers to this topic</div></a>
                     <!-- <div class="text-right"><a class="question-btn" href="<?= url("question/show/{$question->id}"); ?>"> Read</a></div> -->
                 </div>

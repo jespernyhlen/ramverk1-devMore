@@ -188,7 +188,7 @@ DROP TABLE IF EXISTS Answer;
 CREATE TABLE Answer (
     `id` INTEGER PRIMARY KEY NOT NULL,
     `username` VARCHAR(40) NOT NULL,
-    `question_id` INTEGER NOT NULL,
+    `questionId` INTEGER NOT NULL,
     `message` TEXT NOT NULL,
     `points` INTEGER NOT NULL DEFAULT 0,
     `accepted` INTEGER NOT NULL DEFAULT 0,
@@ -198,7 +198,7 @@ CREATE TABLE Answer (
 );
 
 
-INSERT INTO `Answer` (`username`, `question_id`, `message`, `accepted`) VALUES
+INSERT INTO `Answer` (`username`, `questionId`, `message`, `accepted`) VALUES
 ("lekond", 1, 'If there is a . `pyc file`, you can remove the `.py`  file, just be aware that you will lose stack trace information from these files, which will most likely mess up any error/exception logging you have.
 
 
@@ -268,8 +268,8 @@ DROP TABLE IF EXISTS Comment;
 CREATE TABLE Comment (
     `id` INTEGER PRIMARY KEY NOT NULL,
     `username` VARCHAR(40) NOT NULL,
-    `question_id` INTEGER NOT NULL,
-    `answer_id` INTEGER NOT NULL,
+    `questionId` INTEGER NOT NULL,
+    `answerId` INTEGER NOT NULL,
     `message` TEXT NOT NULL,
     `points` INTEGER NOT NULL DEFAULT 0,
     `created` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -278,7 +278,7 @@ CREATE TABLE Comment (
 );
 
 
-INSERT INTO `Comment` (`username`, `question_id`, `answer_id`, `message`) VALUES
+INSERT INTO `Comment` (`username`, `questionId`, `answerId`, `message`) VALUES
 ("twistedsoul", 1, 2, 'this would mean to "outsource the packages to the system. However, I would need to relocate the virtualenv to another system that might not have the packes installed and where no root permission are available.'),
 ("jesperrn", 1, 2, "Relocating the virtualenv to another system won't work anyway, because virtualenvs contain system specific paths."),
 ("twistedsoul", 1, 2, 'Its no problem to relocated a virtualenv with `virtualenv --relocatable my-venv`. I did it many times. Check it out here: [stackoverflow.com/questions/32407365/can-i-move-a-virtualenv](stackoverflow.com/questions/32407365/can-i-move-a-virtualenv)'),
@@ -293,11 +293,11 @@ DROP TABLE IF EXISTS Tag;
 CREATE TABLE Tag (
     `id` INTEGER PRIMARY KEY NOT NULL,
     `tag` VARCHAR(50) NOT NULL,
-    `question_id` INTEGER NOT NULL
+    `questionId` INTEGER NOT NULL
 );
 
 
-INSERT INTO `Tag` (`tag`, `question_id`) VALUES
+INSERT INTO `Tag` (`tag`, `questionId`) VALUES
 ('stupid', 1),
 ('cucumbers', 1),
 ('nginx', 2),
@@ -318,7 +318,7 @@ INSERT INTO `Tag` (`tag`, `question_id`) VALUES
 DROP TABLE IF EXISTS Points;
 CREATE TABLE Points (
     `id` INTEGER PRIMARY KEY NOT NULL,
-    `point_for_id` INTEGER NOT NULL,
-    `point_for_type` VARCHAR(40) NOT NULL,
+    `pointForId` INTEGER NOT NULL,
+    `pointForType` VARCHAR(40) NOT NULL,
     `username` VARCHAR(40) NOT NULL
 );

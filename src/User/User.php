@@ -66,7 +66,7 @@ class User extends ActiveRecordModel
      * @return String containing either just a URL or a complete image tag
      * @source https://gravatar.com/site/implement/images/php/
      */
-    function setGravatar($email, $sss = 200, $ddd = 'mp', $rrr = 'g', $img = false, $atts = array())
+    public function setGravatar($email, $sss = 200, $ddd = 'mp', $rrr = 'g', $img = false, $atts = array())
     {
         $gravatarUrl = 'https://www.gravatar.com/avatar/';
         $gravatarUrl .= md5(strtolower(trim($email)));
@@ -82,7 +82,7 @@ class User extends ActiveRecordModel
     /**
     * Update user score.
     *
-    * @return 
+    * @return
     */
     public function updateScore($username, $value, $positive)
     {
@@ -96,7 +96,7 @@ class User extends ActiveRecordModel
     /**
     * Increase votes for user.
     *
-    * @return 
+    * @return
     */
     public function incVotes($username)
     {
@@ -110,7 +110,7 @@ class User extends ActiveRecordModel
     /**
     * Get ranktitle depending on amount of userscore.
     *
-    * @return 
+    * @return
     */
     public function getRankTitle($score)
     {
@@ -133,7 +133,7 @@ class User extends ActiveRecordModel
      * @param string $where to use in where statement.
      * @param mixed  $value to use in where statement.
      * @param string $order to display the results.
-     * 
+     *
      * @return array of object of this class
      */
     public function findAllWhereOrderBy($where, $value, $order)

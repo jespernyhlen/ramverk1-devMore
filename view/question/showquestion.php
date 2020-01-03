@@ -31,7 +31,7 @@ $urlToDelete = url("question/delete");
 
 <?php if (!$question) : ?>
     <p>There are no items to show.</p>
-<?php
+    <?php
     return;
 endif;
 ?>
@@ -44,7 +44,7 @@ endif;
                 <input type="hidden" name="vote"value="1"/>
                 <input type="hidden" name="type"value="question"/>
                 <input type="hidden" name="id" value="<?= $question->id ?>"/>
-                <input type="hidden" name="question_username" value="<?= $question->username ?>"/>
+                <input type="hidden" name="questionUsername" value="<?= $question->username ?>"/>
                 <button class="btn-no-show"><div class="arrow-up"></div></button>
             </form>
             <p class="post-score"><?= $question->points ?></p>
@@ -53,7 +53,7 @@ endif;
                 <input type="hidden" name="vote" value="-1"/>
                 <input type="hidden" name="type"value="question"/>
                 <input type="hidden" name="id" value="<?= $question->id ?>"/>
-                <input type="hidden" name="posted_username" value="<?= $question->username ?>"/>
+                <input type="hidden" name="postedUsername" value="<?= $question->username ?>"/>
                 <button class="btn-no-show"><div class="arrow-down"></div></button>
             </form>
         </div>
@@ -64,8 +64,8 @@ endif;
                         <?php foreach ($tags as $tag) : ?>
                             <a class="question-tag" href="<?= url("tag/result/{$tag->tag}"); ?>">#<?= $tag->tag ?></a>
                         <?php endforeach; ?>
-                    <?php
-                        endif;
+                        <?php
+                    endif;
                     ?>
                 </div>
             

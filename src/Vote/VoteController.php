@@ -10,20 +10,12 @@ use Jen\Question\Question;
 use Jen\Answer\Answer;
 use Jen\Comment\Comment;
 
-
-
-
-// use Anax\Route\Exception\ForbiddenException;
-// use Anax\Route\Exception\NotFoundException;
-// use Anax\Route\Exception\InternalErrorException;
-
 /**
  * A sample controller to show how a controller class can be implemented.
  */
 class VoteController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
-  
 
     /**
      * Handler with form to update an item.
@@ -36,20 +28,22 @@ class VoteController implements ContainerInjectableInterface
     {
         // $this->checkUser();
         $session = $this->di->get("session");
-        if (!$session->get("active_user")) return $this->di->response->redirect("user/login");
+        if (!$session->get("activeUser")) {
+            return $this->di->response->redirect("user/login");
+        }
 
         $request         = $this->di->get("request");
         $username        = $session->get("username");
         $id              = $request->getPost("id");
         $type            = $request->getPost("type");
         $value           = $request->getPost("vote");
-        $posted_username = $request->getPost("posted_username");
+        $postedUsername  = $request->getPost("postedUsername");
         $returnLocation  = $request->getPost("location");
         $vote            = new Vote();
         $vote->setDb($this->di->get("dbqb"));
         $voteSuccess = $vote->updatePoints($username, $id, $type);
 
-        if ($voteSuccess && $posted_username !== $session->get("username")) {
+        if ($voteSuccess && $postedUsername !== $session->get("username")) {
             switch ($type) {
                 case "question":
                     $question = new Question();
@@ -74,7 +68,7 @@ class VoteController implements ContainerInjectableInterface
             }
             $user = new User();
             $user->setDb($this->di->get("dbqb"));
-            $user->updateScore($posted_username, 0.5, $value);
+            $user->updateScore($postedUsername, 0.5, $value);
             $user->updateScore($username, 0.25, 1);
             $user->incVotes($username);
         }

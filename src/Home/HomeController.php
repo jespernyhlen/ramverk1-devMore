@@ -36,8 +36,8 @@ class HomeController implements ContainerInjectableInterface
         foreach ($questions as $q) {
             $answer = new Answer();
             $answer->setDb($this->di->get("dbqb"));
-            $q->answersAmount = count($answer->findAllWhere("question_id = ?", $q->id));
-            $q->tags = $tag->findAllWhere("question_id = ?", $q->id);
+            $q->answersAmount = count($answer->findAllWhere("questionId = ?", $q->id));
+            $q->tags = $tag->findAllWhere("questionId = ?", $q->id);
         };
 
         $user = new User();

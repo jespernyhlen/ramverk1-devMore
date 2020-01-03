@@ -83,9 +83,8 @@ class LoginForm extends FormModel
     public function callbackSuccess()
     {
         $session = $this->di->get("session");
-        $session->set("user_id", $this->form->value("id"));
         $session->set("username", $this->form->value("username"));
-        $session->set("active_user", true);
+        $session->set("activeUser", true);
 
         $this->di->get("response")->redirect("user/profile")->send();
     }

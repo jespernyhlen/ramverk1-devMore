@@ -4,7 +4,6 @@ namespace Jen\Tag;
 
 use Anax\DatabaseActiveRecord\ActiveRecordModel;
 
-
 /**
  * A database driven model using the Active Record design pattern.
  */
@@ -24,7 +23,7 @@ class Tag extends ActiveRecordModel
      */
     public $id;
     public $tag;
-    public $question_id;
+    public $questionId;
 
     
     /**
@@ -32,15 +31,11 @@ class Tag extends ActiveRecordModel
     *
     * @return Tag
     */
-    public function convertTags($question_id)
+    public function convertTags($questId)
     {
-        // $tag = new Tag();
-        // $tag->setDb($this->db);
-        // return $tag->findAllWhere("question_id = ?", $question_id)[0]->tag;
-
         $tag = new Tag();
         $tag->setDb($this->db);
-        $tagString = $tag->findAllWhere("question_id = ?", $question_id)[0]->tag;
+        $tagString = $tag->findAllWhere("questionId = ?", $questId)[0]->tag;
         $tagList = explode(", ", $tagString);
         
         return $tagList;
@@ -57,7 +52,7 @@ class Tag extends ActiveRecordModel
     {
         $this->checkDb();
         return $this->db->connect()
-                        ->select("COUNT(tag) AS tagamount, tag, question_id")
+                        ->select("COUNT(tag) AS tagamount, tag, questionId")
                         ->from("Tag")
                         ->groupby("tag")
                         ->orderBy("tagamount DESC")
@@ -65,7 +60,4 @@ class Tag extends ActiveRecordModel
                         ->execute()
                         ->fetchAll();
     }
-
 }
-
-

@@ -19,7 +19,7 @@ class Answer extends ActiveRecordModel
      * Columns in the table.
      */
     public $id;
-    public $question_id;
+    public $questionId;
     public $message;
 
     /**
@@ -56,11 +56,11 @@ class Answer extends ActiveRecordModel
     *
     * @return array
     */
-    public function getAnswersByQuestion($question_id)
+    public function getAnswersByQuestion($questId)
     {
         $answer = new Answer();
         $answer->setDb($this->db);
-        $answers = $answer->findAllWhere("question_id = ?", $question_id);
+        $answers = $answer->findAllWhere("questionId = ?", $questId);
         
         return $answers;
     }
@@ -68,11 +68,11 @@ class Answer extends ActiveRecordModel
     /**
     * Update points of answer.
     *
-    * @return 
+    * @return
     */
-    public function updatePoints($answer_id, $value)
+    public function updatePoints($answerId, $value)
     {
-        $this->find("id", $answer_id);
+        $this->find("id", $answerId);
         $this->points = $this->points + $value;
         $this->save();
 
@@ -82,11 +82,11 @@ class Answer extends ActiveRecordModel
     /**
     * Set answer as accepted.
     *
-    * @return 
+    * @return
     */
-    public function acceptAnswer($answer_id)
+    public function acceptAnswer($answerId)
     {
-        $this->find("id", $answer_id);
+        $this->find("id", $answerId);
         $this->accepted = 1;
         $this->save();
 
@@ -96,13 +96,13 @@ class Answer extends ActiveRecordModel
     /**
     * Get amount of answer to question.
     *
-    * @return 
+    * @return
     */
-    public function answersAmount($questionId)
+    public function answersAmount($questId)
     {
         $answer = new Answer();
         $answer->setDb($this->db);
-        $amount = $answer->findAllWhere("question_id = ?", $questionId);
+        $amount = $answer->findAllWhere("questionId = ?", $questId);
         
         return count($amount);
     }

@@ -15,7 +15,7 @@ $questions = isset($questions) ? $questions : null;
 
 <?php if (!$questions) : ?>
     <p>There are no topics from this user.</p>
-<?php
+    <?php
     return;
 endif;
 ?>
@@ -28,9 +28,6 @@ endif;
                 <?php $preview = (strlen($question->message) > 100 ? substr($question->message, 0, 100) . "..." : $question->message); ?>
                 <p class="question-message"><?= $filter->parse($preview, ["markdown"])->text ?></p>
             </div></a>
-            <!-- <a href="<?= url("question/show/{$question->id}"); ?>"><div class="comment-amount"><i class="fas fa-comment"></i> <?= $question->answersAmount ?> Answers to this topic</div></a> -->
-            <!-- <div class="text-right"><a class="question-btn" href="<?= url("question/show/{$question->id}"); ?>"> Read</a></div> -->
-        
         </div>
     <?php endforeach; ?>
 </div>

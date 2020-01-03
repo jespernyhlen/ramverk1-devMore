@@ -97,7 +97,7 @@ class CreateForm extends FormModel
             if (!$tagItem == "") {
                 $tag = new Tag();
                 $tag->setDb($this->di->get("dbqb"));
-                $tag->question_id = $question->id;
+                $tag->questionId = $question->id;
                 $tag->tag = $tagItem;
                 $tag->save();
             }

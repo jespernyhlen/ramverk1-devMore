@@ -13,7 +13,7 @@ $tags = isset($tags) ? $tags : null;
 
 <?php if (!$questions) : ?>
     <p>There are no items to show.</p>
-<?php
+    <?php
     return;
 endif;
 ?>
@@ -33,8 +33,8 @@ endif;
                                 <?php foreach ($question->tags as $tag) : ?>
                                     <a class="question-tag" href="<?= url("tag/result/{$tag->tag}"); ?>">#<?= $tag->tag ?></a>
                                 <?php endforeach; ?>
-                        <?php
-                            endif;
+                            <?php
+                        endif;
                         ?>
                     </div>
 

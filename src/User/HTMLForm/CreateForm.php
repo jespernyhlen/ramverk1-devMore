@@ -82,7 +82,7 @@ class CreateForm extends FormModel
         $password      = $this->form->value("password");
         $passwordAgain = $this->form->value("repeat-password");
 
-        if ($password !== $passwordAgain ) {
+        if ($password !== $passwordAgain) {
             $this->form->rememberValues();
             $this->form->addOutput("Password did not match.");
             return false;
@@ -105,7 +105,7 @@ class CreateForm extends FormModel
 
         $checkUsername = $user->findAllWhere("username = ?", $username);
 
-        if (count($checkUsername) !== 0 ) {
+        if (count($checkUsername) !== 0) {
             $this->form->rememberValues();
             $this->form->addOutput("Username already exists.");
             return false;

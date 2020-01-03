@@ -76,7 +76,7 @@ class UpdateForm extends FormModel
      * Get details on item to load form with.
      *
      * @param integer $id get details on item with id.
-     * 
+     *
      * @return Question
      */
     public function getItemDetails($id) : object
@@ -125,7 +125,7 @@ class UpdateForm extends FormModel
         foreach ($tagsFromId as $tagItem) {
                 $removeTag = new Tag();
                 $removeTag->setDb($this->di->get("dbqb"));
-                $removeTag->findWhere("question_id = ? and tag = ?", [$question->id, $tagItem->tag]);
+                $removeTag->findWhere("questionId = ? and tag = ?", [$question->id, $tagItem->tag]);
                 $removeTag->delete();
         }
 
@@ -133,7 +133,7 @@ class UpdateForm extends FormModel
             if ($tagItem !== "") {
                 $newTag = new Tag();
                 $newTag->setDb($this->di->get("dbqb"));
-                $newTag->question_id = $question->id;
+                $newTag->questionId = $question->id;
                 $newTag->tag = $tagItem;
                 $newTag->save();
             }

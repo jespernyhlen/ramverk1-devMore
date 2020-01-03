@@ -1,3 +1,5 @@
-#### Kursrepo
+#### Github
 
-Skriv något kort om kursen och länka till [kursens hemsida på dbwebb.se](XXX) och till [kursrepot på GitHub](XXX).
+We are based on open-source and the entire codebase can be seen on Github.
+
+[Github Repository](https://github.com/jespernyhlen/ramverk1-devMore)

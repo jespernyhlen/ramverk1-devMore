@@ -8,7 +8,7 @@ $tags = isset($tags) ? $tags : null;
 
 <?php if (!$tags) : ?>
     <p>There are no items to show.</p>
-<?php
+    <?php
     return;
 endif;
 ?>

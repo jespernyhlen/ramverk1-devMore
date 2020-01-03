@@ -26,7 +26,7 @@ class CommentController implements ContainerInjectableInterface
     {
         $session = $this->di->get("session");
 
-        if (!$session->get("active_user") && !$session->get("username")) {
+        if (!$session->get("activeUser") && !$session->get("username")) {
             return $this->di->response->redirect("user/login");
         }
     }
@@ -44,8 +44,8 @@ class CommentController implements ContainerInjectableInterface
         $username = $session->get("username");
 
         $values = [
-            "question_id" => $this->di->request->getGet("question_id") ?? null,
-            "answer_id" => $this->di->request->getGet("answer_id") ?? null
+            "questionId" => $this->di->request->getGet("questionId") ?? null,
+            "answerId" => $this->di->request->getGet("answerId") ?? null
         ];
 
         $form = new CreateForm($this->di, $username, $values);
@@ -76,7 +76,9 @@ class CommentController implements ContainerInjectableInterface
         $comment->setDb($this->di->get("dbqb"));
         $commentInfo = $comment->findById($id);
 
-        if (!$commentInfo->id || $this->di->get("session")->get("username") !== $commentInfo->username) return $this->di->response->redirect("");
+        if (!$commentInfo->id || $this->di->get("session")->get("username") !== $commentInfo->username) {
+            return $this->di->response->redirect("");
+        }
 
         $form = new UpdateForm($this->di, $id);
         $form->check();
@@ -86,7 +88,7 @@ class CommentController implements ContainerInjectableInterface
         ]);
 
         $page->add("comment/goback-redirect", [
-            "url" => "question/show/{$commentInfo->question_id}",
+            "url" => "question/show/{$commentInfo->questionId}",
         ]);
 
         return $page->render([
@@ -94,61 +96,3 @@ class CommentController implements ContainerInjectableInterface
         ]);
     }
 }
-
-    // /**
-    //  * Handler with form to show an item.
-    //  *
-    //  * @param int $id the id to show.
-    //  *
-    //  * @return object as a response object
-    //  */
-    // public function showAction(int $id) : object
-    // {
-    //     $page = $this->di->get("page");
-        
-    //     $question = new Question();
-    //     $question->setDb($this->di->get("dbqb"));
-    //     $questions = $question->findWhere("id = ?", $id);
-
-    //     $tag = new Tag();
-    //     $tag->setDb($this->di->get("dbqb"));
-
-    //     $questions->tags = $tag->getTags($questions->id);
-
-    //     $page->add("question/show", [
-    //         "question" => $questions,
-    //     ]);
-
-    //     return $page->render([
-    //         "title" => "A collection of items",
-    //     ]);
-    // }
-
-    // /**
-    //  * Show all items.
-    //  *
-    //  * @return object as a response object
-    //  */
-    // public function indexActionGet() : object
-    // {
-    //     $page = $this->di->get("page");
-        
-    //     $question = new Question();
-    //     $question->setDb($this->di->get("dbqb"));
-    //     $questions = $question->getQuestions();
-
-    //     $tag = new Tag();
-    //     $tag->setDb($this->di->get("dbqb"));
-
-    //     foreach ($questions as $q) {
-    //         $q->tags = $tag->getTags($q->id);
-    //     };
-
-    //     $page->add("question/view-all", [
-    //         "questions" => $questions,
-    //     ]);
-
-    //     return $page->render([
-    //         "title" => "A collection of items",
-    //     ]);
-    // }

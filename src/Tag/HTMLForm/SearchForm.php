@@ -56,6 +56,3 @@ class SearchForm extends FormModel
         $this->di->get("response")->redirect("tag/result/{$tagQuery}")->send();
     }
 }
-
-
-

@@ -8,4 +8,4 @@ $urlToViewItems = url("question");
 
 ?>
 
-<?= $form ?>
+<?= $form;
