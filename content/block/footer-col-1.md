@@ -1,3 +1,3 @@
-#### Footer col 1
+#### devMore
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Our community devMore was founded 2020 to connect developers around the globe, feel fre to contact us with questions or comments.

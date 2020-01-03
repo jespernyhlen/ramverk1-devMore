@@ -1,3 +1,6 @@
-#### Footer col 3
+#### Quick links
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+[Topics](question)  
+[Users](user)  
+[Tags](tag)  
+[Our Story](about)
