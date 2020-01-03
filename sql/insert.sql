@@ -1,101 +1,7 @@
 
---
--- Table Users
---
-DROP TABLE IF EXISTS User;
-CREATE TABLE User (
-    `id` INTEGER PRIMARY KEY NOT NULL,
-    `username` VARCHAR(40) UNIQUE NOT NULL,
-    `name` VARCHAR(80) NOT NULL,
-    `email` VARCHAR(30) UNIQUE NOT NULL,
-    `gravatar` varchar(255) DEFAULT NULL,
-    `presentation` VARCHAR(200),
-    `password` VARCHAR(40) NOT NULL,
-    `posts` INTEGER NOT NULL DEFAULT 0,
-    `answers` INTEGER NOT NULL DEFAULT 0,
-    `comments` INTEGER NOT NULL DEFAULT 0,
-    `votes` INTEGER NOT NULL DEFAULT 0,
-    `score` INTEGER NOT NULL DEFAULT 0,
-    `created` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `updated` DATETIME DEFAULT NULL,
-    `deleted` DATETIME DEFAULT NULL
-);
-
-
---
--- Table Questions
---
-DROP TABLE IF EXISTS Question;
-CREATE TABLE Question (
-    `id` INTEGER PRIMARY KEY NOT NULL,
-    `title` VARCHAR(150) NOT NULL,
-    `message` TEXT NOT NULL,
-    `username` VARCHAR(40) NOT NULL,
-    `points` INTEGER NOT NULL DEFAULT 0,
-    `created` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `updated` DATETIME DEFAULT NULL,
-    `deleted` DATETIME DEFAULT NULL
-);
-
-
---
--- Table Comment
---
-DROP TABLE IF EXISTS Answer;
-CREATE TABLE Answer (
-    `id` INTEGER PRIMARY KEY NOT NULL,
-    `username` VARCHAR(40) NOT NULL,
-    `question_id` INTEGER NOT NULL,
-    `message` TEXT NOT NULL,
-    `points` INTEGER NOT NULL DEFAULT 0,
-    `accepted` INTEGER NOT NULL DEFAULT 0,
-    `created` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `updated` DATETIME DEFAULT NULL,
-    `deleted` DATETIME DEFAULT NULL
-);
-
-
---
--- Table Comment
---
-DROP TABLE IF EXISTS Comment;
-CREATE TABLE Comment (
-    `id` INTEGER PRIMARY KEY NOT NULL,
-    `username` VARCHAR(40) NOT NULL,
-    `question_id` INTEGER NOT NULL,
-    `answer_id` INTEGER NOT NULL,
-    `message` TEXT NOT NULL,
-    `points` INTEGER NOT NULL DEFAULT 0,
-    `created` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `updated` DATETIME DEFAULT NULL,
-    `deleted` DATETIME DEFAULT NULL
-);
-
-
---
--- Table Tags
---
-DROP TABLE IF EXISTS Tag;
-CREATE TABLE Tag (
-    `id` INTEGER PRIMARY KEY NOT NULL,
-    `tag` VARCHAR(50) NOT NULL,
-    `question_id` INTEGER NOT NULL
-);
-
-
---
--- Table Tags
---
-DROP TABLE IF EXISTS Points;
-CREATE TABLE Points (
-    `id` INTEGER PRIMARY KEY NOT NULL,
-    `point_for_id` INTEGER NOT NULL,
-    `point_for_type` VARCHAR(40) NOT NULL,
-    `username` VARCHAR(40) NOT NULL
-);
-
-
-INSERT INTO `User` (`username`, `name`, `email`, `password`, `gravatar`, `posts`, `answers`, `comments`, `score`) VALUES
+INSERT INTO `User`
+    (`username`, `name
+`, `email`, `password`, `gravatar`, `posts`, `answers`, `comments`, `score`) VALUES
 ('connys', 'conny', 'conny@hotmail.com', '$2y$10$JsfU2a5RpAwQIO1TPGN5Xu0/E2FAo/jBdNtNB5u.tsZ9pCPM0p8mu', 'https://www.gravatar.com/avatar/e8f710ddf1540b8b1b7c2484b4a589db?d=retro', 0, 1, 0, 5),
 ('håkanstek', 'håkan', 'håkan@hotmail.com', '$2y$10$0higxO7jcbPfNvqAYjezw.bTXtBoaVRM80x8XdE.N7MPRcqJ6GjNK', 'https://www.gravatar.com/avatar/30d4a31415648af1262bda44e37bda88?d=retro', 0, 0, 0, 0),
 ('jesperrn', 'jesper nyhlen', 'jeppe_nyhlen@hotmail.com', '$2y$10$0YkHavhqOpng6NQ6hAE9cOuBQcnG.MHzH67prnFM76QgAwuNHhQIi', 'https://www.gravatar.com/avatar/29232024803641c16a9f6b0744248faf?s=200&d=mp&r=g', 0, 4, 1, 22.5),
@@ -110,7 +16,10 @@ INSERT INTO `User` (`username`, `name`, `email`, `password`, `gravatar`, `posts`
 ('CodeExtreme', 'johan larsson', 'codexlarsson@gmail.com', '$2y$10$vSrIh8Ses8.94WNjy6r9KuWPyUuVhjTNeW74QVltFgzaCe/4raMsO', 'https://www.gravatar.com/avatar/c13b3ea4a79e3575cf7a33ee3ea8f2e0?s=200&d=mp&r=g', 0, 0, 0, 0);
 
 
-INSERT INTO `Question` (`title`, `message`, `username`) VALUES
+INSERT INTO `Question` (`
+title`,
+`message
+`, `username`) VALUES
 -- ('What is the most stupid question asked?', 'Hey, im wondering if cucumbers are made of stone or lava or sement...? Answer please', 'connys'),
 -- ('Is grey a color?', 'There is alot of colors around, is grey legit? huuh', 'håkanstek'),
 ('What are the possibilities in order to reduce the size of a python virtual environment?', 'How is it possible to reduce the size of a python virtual environment?
@@ -239,7 +148,10 @@ The site works for several days (weeks in some cases), no one touches it, and th
 It's a Windows 2008 R2 box. Has PHP fallen over? How would I go about looking into it further. Restarting IIS fixes the issue.", 'beacy');
 
 
-INSERT INTO `Answer` (`username`, `question_id`, `message`, `accepted`) VALUES
+INSERT INTO `Answer` (`
+username`,
+`question_id
+`, `message`, `accepted`) VALUES
 ("lekond", 1, 'If there is a . `pyc file`, you can remove the `.py`  file, just be aware that you will lose stack trace information from these files, which will most likely mess up any error/exception logging you have.
 
 
@@ -302,7 +214,10 @@ Open your `wp-setting.php` file and add the below line almost on top of the file
 `define( 'WP_MEMORY_LIMIT', '40M' );// you can try it with more or a bit less memory`", 0);
 
 
-INSERT INTO `Comment` (`username`, `question_id`, `answer_id`, `message`) VALUES
+INSERT INTO `Comment` (`
+username`,
+`question_id
+`, `answer_id`, `message`) VALUES
 ("twistedsoul", 1, 2, 'this would mean to "outsource the packages to the system. However, I would need to relocate the virtualenv to another system that might not have the packes installed and where no root permission are available.'),
 ("jesperrn", 1, 2, "Relocating the virtualenv to another system won't work anyway, because virtualenvs contain system specific paths."),
 ("twistedsoul", 1, 2, 'Its no problem to relocated a virtualenv with `virtualenv --relocatable my-venv`. I did it many times. Check it out here: [stackoverflow.com/questions/32407365/can-i-move-a-virtualenv](stackoverflow.com/questions/32407365/can-i-move-a-virtualenv)'),
@@ -310,7 +225,10 @@ INSERT INTO `Comment` (`username`, `question_id`, `answer_id`, `message`) VALUES
 ("codeWarrior", 3, 5, 'Unfortionatly no. The thing is that Im not looking for how to process incoming webhook. Im trying to access the issue PR id (exist in the jira issue) for an outgoing webhook..');
 
 
-INSERT INTO `Tag` (`tag`, `question_id`) VALUES
+INSERT INTO `Tag` (`
+tag`,
+`question_id
+`) VALUES
 ('stupid', 1),
 ('cucumbers', 1),
 ('nginx', 2),
