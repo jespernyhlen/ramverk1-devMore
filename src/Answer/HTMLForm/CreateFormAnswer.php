@@ -28,6 +28,7 @@ class CreateFormAnswer extends FormModel
             [
                 "id" => __CLASS__,
                 "legend" => "Answer this topic",
+                "escape-values" => false,
             ],
             [
                 "message" => [

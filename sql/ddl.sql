@@ -298,9 +298,10 @@ CREATE TABLE Tag (
 
 
 INSERT INTO `Tag` (`tag`, `questionId`) VALUES
-('stupid', 1),
-('cucumbers', 1),
+('python', 1),
+('virtual', 1),
 ('nginx', 2),
+('error', 2),
 ('websocket', 2),
 ('nginx-config', 2),
 ('automation', 3),
@@ -309,7 +310,9 @@ INSERT INTO `Tag` (`tag`, `questionId`) VALUES
 ('php', 4),
 ('stupid', 4),
 ('iis', 4),
-('windows', 4);
+('windows', 4),
+('error', 4);
+
 
 
 --

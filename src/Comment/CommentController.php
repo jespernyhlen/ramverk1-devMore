@@ -49,7 +49,7 @@ class CommentController implements ContainerInjectableInterface
         $form = new CreateForm($this->di, $username, $values);
         $form->check();
 
-        $page->add("Comment/create", [
+        $page->add("comment/create", [
             "title" => "Comment this answer",
             "form" => $form->getHTML(),
         ]);

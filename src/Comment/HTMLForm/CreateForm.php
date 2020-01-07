@@ -29,6 +29,7 @@ class CreateForm extends FormModel
             [
                 "id" => __CLASS__,
                 "legend" => "Comment this answer",
+                "escape-values" => false,
             ],
             [
                 "message" => [

@@ -27,12 +27,13 @@ class CreateForm extends FormModel
             [
                 "id" => __CLASS__,
                 "legend" => "Create a new topic",
+                "escape-values" => false,
             ],
             [
                 "title" => [
                     "type" => "text",
                     "validation" => ["not_empty"],
-                    "placeholder" => "Title (Max 2000 characters)",
+                    "placeholder" => "Title (Max 100 characters)",
                 ],
                         
                 "message" => [
@@ -77,7 +78,7 @@ class CreateForm extends FormModel
             return false;
         }
 
-        if (strlen($question->message) > 1000) {
+        if (strlen($question->message) > 2000) {
             $this->form->rememberValues();
             $this->form->addOutput("Message can't include more then 2000 characters.");
             return false;
