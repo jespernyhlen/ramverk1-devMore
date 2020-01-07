@@ -30,31 +30,31 @@ class AnswerController implements ContainerInjectableInterface
         }
     }
 
-    /**
-     * Create an answer.
-     *
-     * @return object as a response object
-     */
-    public function createAction($postId) : object
-    {
-        $this->checkUser();
-        $session = $this->di->get("session");
-        $username = $session->get("username");
+    // /**
+    //  * Create an answer.
+    //  *
+    //  * @return object as a response object
+    //  */
+    // public function createAction($postId) : object
+    // {
+    //     $this->checkUser();
+    //     $session = $this->di->get("session");
+    //     $username = $session->get("username");
 
-        $page = $this->di->get("page");
+    //     $page = $this->di->get("page");
 
-        $form = new CreateForm($this->di, $username, $postId);
-        $form->check();
+    //     $form = new CreateForm($this->di, $username, $postId);
+    //     $form->check();
 
-        $page->add("answer/create", [
-            "title" => "Answer this topic",
-            "form" => $form->getHTML(),
-        ]);
+    //     $page->add("answer/create", [
+    //         "title" => "Answer this topic",
+    //         "form" => $form->getHTML(),
+    //     ]);
 
-        return $page->render([
-            "title" => "Answer this topic",
-        ]);
-    }
+    //     return $page->render([
+    //         "title" => "Answer this topic",
+    //     ]);
+    // }
 
     /**
      * Update an answer.

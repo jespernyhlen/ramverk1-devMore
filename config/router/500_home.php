@@ -16,7 +16,7 @@ return [
     "routes" => [
         [
             "info" => "Flat file content controller.",
-            "mount" => "",
+            "mount" => "/",
             "handler" => "\Jen\Home\HomeController",
         ],
     ]

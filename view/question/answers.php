@@ -91,7 +91,9 @@ $urlToDelete = url("question/delete");
                     </div>
                       
                     <div class="text-right">
-                        <a href="<?= url("comment/create?questionId={$question->id}&answerId={$answer->id}"); ?>"> Comment</a> 
+                        <?php if ($activeUser) : ?>
+                            <a href="<?= url("comment/create?questionId={$question->id}&answerId={$answer->id}"); ?>"> Comment</a> 
+                        <?php endif; ?> 
                         <?php if ($activeUser == $answer->username) : ?>
                             | <a href="<?= url("answer/update/{$answer->id}"); ?>"> Edit</a>
                         <?php endif; ?> 

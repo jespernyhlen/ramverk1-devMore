@@ -11,7 +11,7 @@ use Jen\Tag\Tag;
 /**
  * Form to create an answer.
  */
-class CreateForm extends FormModel
+class CreateFormAnswer extends FormModel
 {
     /**
      * Constructor injects with DI container.
@@ -59,7 +59,6 @@ class CreateForm extends FormModel
         $answer->username  = $this->username;
         $answer->message = $this->form->value("message");
         $answer->points = 0;
-
         
         if (strlen($answer->message) > 2000) {
             $this->form->rememberValues();

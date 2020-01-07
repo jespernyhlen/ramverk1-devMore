@@ -74,7 +74,9 @@ endif;
                 <p class="question-message"> <?= $filter->parse($question->message, ["markdown"])->text ?></p>
             </div>
             <div class="text-right">
-                    <a href="<?= url("answer/create/{$question->id}"); ?>"> Answer</a>
+                <?php if (!$activeUser) : ?>
+                    <a href="<?= url("user/login"); ?>"> Login to answer</a>
+                <?php endif; ?> 
                 <?php if ($questionOwner) : ?>
                     | <a href="<?= url("question/update/{$question->id}"); ?>"> Edit</a>
                 <?php endif; ?> 

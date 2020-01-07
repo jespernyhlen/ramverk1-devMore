@@ -5,10 +5,9 @@ namespace Jen\Question;
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Jen\Question\HTMLForm\CreateForm;
-use Jen\Question\HTMLForm\EditForm;
-use Jen\Question\HTMLForm\DeleteForm;
 use Jen\Question\HTMLForm\UpdateForm;
 use Jen\Question\HTMLForm\SearchForm;
+use Jen\Answer\HTMLForm\CreateFormAnswer;
 use Jen\Tag\Tag;
 use Jen\User\User;
 use Jen\Answer\Answer;
@@ -142,7 +141,7 @@ class QuestionController implements ContainerInjectableInterface
      *
      * @return object as a response object
      */
-    public function showActionGet(int $id) : object
+    public function showAction(int $id) : object
     {
         $sortby = $this->di->get("request")->getGet("sortby") ?? "accepted DESC";
         $page = $this->di->get("page");
@@ -179,6 +178,14 @@ class QuestionController implements ContainerInjectableInterface
         ];
 
         $page->add("question/showquestion", $contentInfo);
+        $form = new CreateFormAnswer($this->di, $this->di->get("session")->get("username"), $id);
+        $form->check();
+
+        $page->add("answer/create", [
+            "title" => "Answer this topic",
+            "form" => $this->di->get("session")->get("username") ? $form->getHTML() : null,
+        ]);
+
         $page->add("question/answers", $contentInfo);
 
         return $page->render([

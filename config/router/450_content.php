@@ -6,7 +6,7 @@ return [
     "routes" => [
         [
             "info" => "Flat file content controller.",
-            "mount" => "about",
+            "mount" => null,
             "handler" => "\Anax\Content\FileBasedContentController",
         ],
     ]
