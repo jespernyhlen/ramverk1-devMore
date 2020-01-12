@@ -17,6 +17,7 @@ cd ramverk1-devMore
 composer install
 make install
 chmod 777 cache/*
+chmod 777 data
 ```
 
 -   Run sql/setup.bash and allow access.
